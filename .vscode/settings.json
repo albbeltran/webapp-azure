@@ -1,0 +1,11 @@
+{
+    "azureFunctions.deploySubpath": "azure",
+    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.projectLanguageModel": 4,
+    "azureFunctions.preDeployTask": "npm prune (functions)",
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/96a4af6d-5fb8-434e-8760-2af923baa831/resourceGroups/proyecto-cloud/providers/Microsoft.Web/sites/empleadosuaqweb",
+    "appService.deploySubpath": "."
+}

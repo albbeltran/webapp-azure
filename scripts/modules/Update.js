@@ -38,7 +38,7 @@ export default class Update {
             department: this.department.value
         }
 
-        const res = await fetch(`/empleado/${this.id.value}`, {
+        const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/update/${this.id.value}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',

@@ -1,11 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
+const fetch = require("node-fetch");
 
 const app = express();
-
-const router = require('./router');
 
 dotenv.config();
 
@@ -21,17 +19,17 @@ app.use(express.static('public'));
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.use(cookieParser());
-
 // cors
 app.use(cors({
     origin: 'http://127.0.0.1:5500',
     methods: ['GET', 'PUT', 'POST', 'DELETE']
 }));
 
-// router
-app.use('/', router);
-
+app.get('/', async (req, res) => {
+    const response = await fetch('https://empleadosuaq.azurewebsites.net/api/home');
+    const employees = await response.json();
+    res.render('home', { employees })
+})
 app.listen(port, () => {
     console.log(`app is listening on port ${port}`);
 })

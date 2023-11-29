@@ -27,7 +27,7 @@ export default class Create {
                 department: this.department.value
             }
 
-            const res = await fetch('http://localhost:3000/empleado', {
+            const res = await fetch('https://empleadosuaq.azurewebsites.net/api/create', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -42,11 +42,7 @@ export default class Create {
                 return;
             }
 
-            // redirect happens in backend, the url is fetched and sent to the frontend
-            // needed to do manual redirect in the browser
-            this.redirectUrl = res.url;
-            if (this.redirectUrl && this.redirectUrl !== "")
-                window.location = this.redirectUrl;
+            window.location.href = "http://localhost:3000";
 
         } catch (error) {
             console.log(error)

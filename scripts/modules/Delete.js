@@ -15,7 +15,7 @@ export default class Delete {
     async deleteReq() {
         this.idToDelete = this.deleteBtn.getAttribute('name');
 
-        const res = await fetch(`/empleado/${this.idToDelete}`, {
+        const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/delete/${this.idToDelete}`, {
             method: 'DELETE'
         })
 
