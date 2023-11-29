@@ -1,0 +1,104 @@
+<%- include('./partials/head.ejs') %>
+
+  <body class="w-75 mt-5 mb-5 m-auto">
+    <%- include('./partials/header.ejs') %>
+
+      <main>
+        <div class="mb-5">
+          <h3>Empleados</h3>
+          <table class="table" id="table">
+            <tr>
+              <th scope="col">Expediente</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Accciones</th>
+            </tr>
+            <% if(employees.length) { %>
+              <% employees.forEach(employee=> { %>
+                <tr>
+                  <td>
+                    <%= employee.id %>
+                  </td>
+                  <td>
+                    <%= employee.name %>
+                  </td>
+                  <td>
+                    <%= employee.department %>
+                  </td>
+                  <td>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateModal"
+                      id="openModalBtn" name=<%=employee.id %>>Actualizar</button>
+                  </td>
+                  <td>
+                    <button id="delete-btn" class="btn btn-danger" name=<%=employee.id %>>Baja</button>
+                  </td>
+                </tr>
+
+                <% }) %>
+                  <% } %>
+          </table>
+        </div>
+
+        <div class="mb-5 w-50">
+          <h3>Alta de empleado</h3>
+          <form id="create-form" method="post" action="/empleado">
+            <div class="mb-3">
+              <label for="emp_name" class="form-label">Nombre: </label>
+              <input type="text" class="form-control mb-3" name="name" id="emp_name" required>
+
+              <label for="emp_id" class="form-label">Expediente:</label>
+              <input class="form-control mb-3" type="text" name="id" id="emp_id" required>
+
+              <label for="emp_dpto" class="form-label">Departamento:</label>
+              <select class="form-select mb-3" name="department" id="emp_dpto">
+                <option value="INFORMATICA">Informática</option>
+                <option value="VENTAS">Ventas</option>
+                <option value="MERCADOCTENIA">Mercadoctenia</option>
+                <option value="RRHH">Recursos Humanos</option>
+              </select>
+
+              <label for="emp_pass" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control mb-3" name="password" id="emp_pass" required>
+
+              <button type="submit" class="btn btn-primary">Alta</button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+
+      <div class="modal fade mbt-5" tabindex="-1" id="updateModal" aria-labelledby="updateModalLabel" aria-hidden="true"
+        style="top: 20%;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Editar empleado</h5>
+            </div>
+            <form id="update-form">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="emp_id" class="form-label">Expediente:</label>
+                  <input class="form-control mb-3" type="text" name="id" id="modal_emp_id" disabled>
+
+                  <label for="emp_name" class="form-label">Nombre: </label>
+                  <input type="text" class="form-control mb-3" name="name" id="modal_emp_name">
+
+                  <label for="emp_dpto" class="form-label">Departamento:</label>
+                  <select class="form-select mb-3" name="department" id="modal_emp_dpto">
+                    <option value="INFORMATICA">Informática</option>
+                    <option value="VENTAS">Ventas</option>
+                    <option value="MERCADOCTENIA">Mercadoctenia</option>
+                    <option value="RRHH">Recursos Humanos</option>
+                  </select>
+
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="update-btn">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <%- include('./partials/footer.ejs') %>
