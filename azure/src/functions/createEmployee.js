@@ -16,7 +16,7 @@ app.http('create', {
                 database: 'employees_sample',
                 password: 'mysql-uaq-cloud-2023'
             });
-            1
+            
             // query
             const [results,] = await connection.execute("INSERT INTO employees_sample.employees(id,name,password,department) VALUES (?, ?, ?, ?)",
                 [body.id, body.name, body.password, body.department]);

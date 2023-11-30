@@ -32,25 +32,33 @@ export default class Update {
     }
 
     async updateReq() {
-        let employeeData = {
-            id: this.id.value,
-            name: this.name.value,
-            department: this.department.value
+        try {
+            let employeeData = {
+                id: this.id.value,
+                name: this.name.value,
+                department: this.department.value
+            }
+    
+            const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/update/${this.id.value}`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(employeeData)
+            })
+
+            if (res.status != 200) {
+                const error = await res.json();
+                console.error(`Error: ${error}`);
+                alert(`Error. Datos incorrectos.`);
+                return;
+            }
+
+            window.location.href = "http://localhost:3000";
+        } catch(err) {
+            console.error(`Error: ${err}`)
+            alert('Hubo un error. Vuelva a intentar más tarde.');
         }
-
-        const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/update/${this.id.value}`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(employeeData)
-        })
-
-        // redirect happens in backend, the url is fetched and sent to the frontend
-        // needed to do manual redirect in the browser
-        this.redirectUrl = res.url;
-        if (this.redirectUrl && this.redirectUrl !== "")
-            window.location = this.redirectUrl;
     }
 }

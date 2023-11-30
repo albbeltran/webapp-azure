@@ -36,17 +36,18 @@ export default class Create {
                 body: JSON.stringify(employeeData)
             })
 
-            if (res.status === 400) {
+            if (res.status != 200) {
                 const error = await res.json();
-                alert(`ERROR: ${error}`);
+                console.error(`Error: ${error}`);
+                alert(`Error. Empleado existente o datos incorrectos.`);
                 return;
             }
 
             window.location.href = "http://localhost:3000";
 
-        } catch (error) {
-            console.log(error)
-            alert('ERROR INTERNO. Vuelva a intentar más tarde.');
+        } catch (err) {
+            console.error(`Error: ${err}`)
+            alert('Hubo un error. Vuelva a intentar más tarde.');
         }
     }
 }

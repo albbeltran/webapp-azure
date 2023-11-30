@@ -7,22 +7,28 @@ export default class Delete {
 
     events() {
         this.deleteBtn.addEventListener('click', () => {
-            console.log('k')
             this.deleteReq();
         });
     }
 
     async deleteReq() {
-        this.idToDelete = this.deleteBtn.getAttribute('name');
+        try {
+            this.idToDelete = this.deleteBtn.getAttribute('name');
+    
+            const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/delete/${this.idToDelete}`, {
+                method: 'DELETE'
+            })
+    
+            if (res.status != 200) {
+                const error = await res.json();
+                console.error(`Error: ${error}`);
+                alert(`Error. Vuelve a intentarlo.`);
+                return;
+            }
 
-        const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/delete/${this.idToDelete}`, {
-            method: 'DELETE'
-        })
-
-        // redirect happens in backend, the url is fetched and sent to the frontend
-        // needed to do manual redirect in the browser
-        this.redirectUrl = res.url;
-        if (this.redirectUrl && this.redirectUrl !== "")
-            window.location = this.redirectUrl;
+            window.location.href = "http://localhost:3000";
+        } catch(err) {
+            console.error(`Error: ${err}`)
+        }
     }
 }
