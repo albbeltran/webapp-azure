@@ -1,13 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors');
 const fetch = require("node-fetch");
 
 const app = express();
 
 dotenv.config();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // middleware
 
@@ -18,12 +17,6 @@ app.use(express.static('public'));
 // view engine
 app.set('views', './views');
 app.set('view engine', 'ejs');
-
-// cors
-app.use(cors({
-    origin: 'http://127.0.0.1:5500',
-    methods: ['GET', 'PUT', 'POST', 'DELETE']
-}));
 
 app.get('/', async (req, res) => {
     const response = await fetch('https://empleadosuaq.azurewebsites.net/api/home');
