@@ -4,8 +4,7 @@
     <%- include('./partials/header.ejs') %>
 
       <main>
-        <div class="mb-5">
-          <h3>Empleados</h3>
+        <div class="mb-5 table-responsive-sm">
           <table class="table" id="table">
             <tr>
               <th scope="col">Expediente</th>
@@ -39,29 +38,32 @@
           </table>
         </div>
 
-        <div class="mb-5 w-50">
+        <div class="mb-5 w-md-100">
           <h3>Alta de empleado</h3>
           <form id="create-form" method="post" action="/empleado">
-            <div class="mb-3">
-              <label for="emp_name" class="form-label">Nombre: </label>
-              <input type="text" class="form-control mb-3" name="name" id="emp_name" required>
+            <label for="emp_name" class="form-label">Nombre: </label>
+            <input type="text" class="form-control mb-3" name="name" id="emp_name" required>
 
-              <label for="emp_id" class="form-label">Expediente:</label>
-              <input class="form-control mb-3" type="text" name="id" id="emp_id" required>
+            <label for="emp_id" class="form-label">Expediente:</label>
+            <input class="form-control mb-3" type="text" name="id" id="emp_id" required>
 
-              <label for="emp_dpto" class="form-label">Departamento:</label>
-              <select class="form-select mb-3" name="department" id="emp_dpto">
-                <option value="INFORMATICA">Informática</option>
-                <option value="VENTAS">Ventas</option>
-                <option value="MERCADOCTENIA">Mercadoctenia</option>
-                <option value="RRHH">Recursos Humanos</option>
-              </select>
+            <label for="emp_dpto" class="form-label">Secretaría:</label>
+            <select class="form-select mb-3" name="department" id="emp_dpto">
+              <option value="ACADEMICA">Académica</option>
+              <option value="ADMINISTRATIVA">Administrativa</option>
+              <option value="CONTRALORIA">Contraloría</option>
+              <option value="CULTURA">Cultura</option>
+              <option value="FINANZAS">Finanzas</option>
+              <option value="POSGRADO">Posgrado</option>
+              <option value="VINCULACION">Vinculación</option>
+              <option value="PARTICULAR">Particular</option>
+              <option value="ABOGADO">Abogado General</option>
+            </select>
 
-              <label for="emp_pass" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control mb-3" name="password" id="emp_pass" required>
+            <label for="emp_pass" class="form-label">NIP:</label>
+            <input type="password" class="form-control mb-3" name="password" id="emp_pass" required>
 
-              <button type="submit" class="btn btn-primary">Alta</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Alta</button>
           </form>
         </div>
       </main>
@@ -85,10 +87,15 @@
 
                   <label for="emp_dpto" class="form-label">Departamento:</label>
                   <select class="form-select mb-3" name="department" id="modal_emp_dpto">
-                    <option value="INFORMATICA">Informática</option>
-                    <option value="VENTAS">Ventas</option>
-                    <option value="MERCADOCTENIA">Mercadoctenia</option>
-                    <option value="RRHH">Recursos Humanos</option>
+                    <option value="ACADEMICA">Académica</option>
+                    <option value="ADMINISTRATIVA">Administrativa</option>
+                    <option value="CONTRALORIA">Contraloría</option>
+                    <option value="CULTURA">Cultura</option>
+                    <option value="FINANZAS">Finanzas</option>
+                    <option value="POSGRADO">Posgrado</option>
+                    <option value="VINCULACION">Vinculación</option>
+                    <option value="PARTICULAR">Particular</option>
+                    <option value="ABOGADO">Abogado General</option>
                   </select>
 
                 </div>
