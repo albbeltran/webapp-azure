@@ -2,21 +2,23 @@ export default class Delete {
 
     constructor(path) {
         this.path = path;
-        this.deleteBtn = document.querySelector('#delete-btn');
+        this.deleteBtns = document.querySelectorAll('.delete-btn');
         this.events();
     }
 
     events() {
-        this.deleteBtn.addEventListener('click', () => {
-            this.deleteReq();
-        });
+        Array.from(this.deleteBtns).forEach(deleteBtn => {
+            deleteBtn.addEventListener('click', () => {
+                const idToDelete = deleteBtn.getAttribute('name');
+                this.deleteReq(idToDelete);
+            })
+        })
     }
 
-    async deleteReq() {
+    async deleteReq(idToDelete) {
         try {
-            this.idToDelete = this.deleteBtn.getAttribute('name');
     
-            const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/delete/${this.idToDelete}`, {
+            const res = await fetch(`https://empleadosuaq.azurewebsites.net/api/delete/${idToDelete}`, {
                 method: 'DELETE'
             })
     
