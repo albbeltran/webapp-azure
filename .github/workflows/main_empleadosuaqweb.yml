@@ -53,4 +53,4 @@ jobs:
           app-name: 'empleadosuaqweb'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5598F7307FF945D88EA4A03BB7C5F0C6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B81B78B16ED46F081CC13B86C80DB06 }}
