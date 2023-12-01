@@ -1,7 +1,7 @@
-
 export default class Create {
 
-    constructor() {
+    constructor(path) {
+        this.path = path;
         this.form = document.querySelector('#create-form');
         this.id = document.querySelector('#emp_id');
         this.password = document.querySelector('#emp_pass');
@@ -43,7 +43,7 @@ export default class Create {
                 return;
             }
 
-            window.location.href = "http://localhost:3000";
+            window.location.href = this.path;
 
         } catch (err) {
             console.error(`Error: ${err}`)

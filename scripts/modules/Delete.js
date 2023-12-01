@@ -1,6 +1,7 @@
 export default class Delete {
 
-    constructor() {
+    constructor(path) {
+        this.path = path;
         this.deleteBtn = document.querySelector('#delete-btn');
         this.events();
     }
@@ -26,7 +27,7 @@ export default class Delete {
                 return;
             }
 
-            window.location.href = "http://localhost:3000";
+            window.location.href = this.path;
         } catch(err) {
             console.error(`Error: ${err}`)
         }

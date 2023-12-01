@@ -1,6 +1,7 @@
 export default class Update {
 
-    constructor() {
+    constructor(path) {
+        this.path = path;
         this.updateModal = document.querySelector('#updateModal')
         this.updateForm = document.querySelector('#update-form');
         this.id = document.querySelector('#modal_emp_id');
@@ -55,7 +56,7 @@ export default class Update {
                 return;
             }
 
-            window.location.href = "http://localhost:3000";
+            window.location.href = this.path;
         } catch(err) {
             console.error(`Error: ${err}`)
             alert('Hubo un error. Vuelva a intentar más tarde.');
